@@ -1,0 +1,35 @@
+def triangulo_pascal(n):
+  """
+  Esta función genera el triángulo de Pascal hasta n filas.
+
+  Parámetros:
+    n: La cantidad de filas del triángulo de Pascal.
+
+  Retorno:
+    Una lista que contiene el triángulo de Pascal.
+  """
+
+  # Lista para almacenar el triángulo
+  triangulo = []
+
+  # Primera fila
+  triangulo.append([1])
+
+  # Filas posteriores
+  for i in range(1, n):
+    fila_anterior = triangulo[i-1]
+    fila_actual = [1]
+    for j in range(1, i):
+      fila_actual.append(fila_anterior[j-1] + fila_anterior[j])
+    fila_actual.append(1)
+    triangulo.append(fila_actual)
+
+  return triangulo
+
+# Ejemplo de uso
+n = 10
+triangulo = triangulo_pascal(n)
+
+# Imprimir el triángulo
+for fila in triangulo:
+  print(" ".join(map(str, fila)))
